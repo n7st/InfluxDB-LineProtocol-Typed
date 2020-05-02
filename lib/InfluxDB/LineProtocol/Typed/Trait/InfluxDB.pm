@@ -22,16 +22,16 @@ sub as_data {
 
     sswitch ($type) {
         case 'Str':  {
-            return sprintf '"%s"', $value;
+            return sprintf '"%s"', $value || '';
         }
         case 'Bool': {
             return ($value && $value == 1) ? 'TRUE': 'FALSE';
         }
         case 'Num':  {
-            return $value;
+            return $value || 0.00;
         }
         case 'Int':  {
-            return $value.'i';
+            return ($value || 0).'i';
         }
         default: {
             # Only support the above as they are mappable to InfluxDB datatypes

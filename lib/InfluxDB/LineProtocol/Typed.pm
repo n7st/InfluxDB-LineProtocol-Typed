@@ -52,11 +52,11 @@ sub _format_line {
     my $line = $self->measurement;
 
     if (@{$tags}) {
-        $line .= sprintf ',%s', join q{,}, @{$tags};
+        $line .= sprintf ',%s', join q{,}, sort @{$tags};
     }
 
     if (@{$fields}) {
-        $line .= sprintf ' %s', join q{,}, @{$fields};
+        $line .= sprintf ' %s', join q{,}, sort @{$fields};
     }
 
     return sprintf '%s %d', $line, $timestamp;

@@ -12,7 +12,7 @@ sub as_data {
     my $attr  = shift;
     my $value = shift;
 
-    my $type = '';
+    my $type = q{};
 
     if (ref $attr->type_constraint && $attr->type_constraint->can('name')) {
         $type = $attr->type_constraint->name;
@@ -22,7 +22,7 @@ sub as_data {
 
     sswitch ($type) {
         case 'Str':  {
-            return sprintf('"%s"', $value);
+            return sprintf '"%s"', $value;
         }
         case 'Bool': {
             return ($value && $value == 1) ? 'TRUE': 'FALSE';

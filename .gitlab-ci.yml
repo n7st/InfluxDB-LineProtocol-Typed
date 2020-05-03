@@ -17,5 +17,4 @@ test:
       - master
       - merge_requests
     changes:
-      only:
-        - "**/*.pm"
+      - "**/*.pm"

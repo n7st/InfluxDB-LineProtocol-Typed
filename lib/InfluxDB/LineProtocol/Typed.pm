@@ -11,6 +11,8 @@ with qw(
 
 our $VERSION = 1.00;
 
+# ABSTRACT: Type safe InfluxDB line protocol generator
+
 ################################################################################
 
 has measurement => (is => 'ro', isa => 'Str', required => 1);
@@ -19,7 +21,11 @@ has measurement => (is => 'ro', isa => 'Str', required => 1);
 
 sub data2line {
     my $self      = shift;
-    my $timestamp = shift || sprintf '%s%06d000', gettimeofday;
+    my $timestamp = shift;
+
+    unless ($timestamp) {
+        $timestamp = sprintf '%s%06d000', gettimeofday;
+    }
 
     my (@tags, @fields);
 

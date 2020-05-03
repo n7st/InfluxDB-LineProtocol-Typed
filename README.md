@@ -48,7 +48,7 @@ You can use several of Moose's built-in data types:
 * `Str` (mapped to [String](https://v2.docs.influxdata.com/v2.0/reference/syntax/line-protocol/#string))
 * `Num` (mapped to [Float](https://v2.docs.influxdata.com/v2.0/reference/syntax/line-protocol/#float))
 * `Int` (mapped to [Integer](https://v2.docs.influxdata.com/v2.0/reference/syntax/line-protocol/#integer))
-* `Bool` (mapped to [Boolean](https://v2.docs.influxdata.com/v2.0/reference/syntax/line-protocol/#boolean)])
+* `Bool` (mapped to [Boolean](https://v2.docs.influxdata.com/v2.0/reference/syntax/line-protocol/#boolean))
 
 Unsigned integers are a little more complex and require an extra trait:
 

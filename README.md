@@ -1,4 +1,4 @@
-# InfluxDB::LineProtocol::Typed
+# InfluxDB::LineProtocol::Typed [![pipeline status](https://gitlab.com/n7st/influxdb-lineprotocol-typed/badges/master/pipeline.svg)](https://gitlab.com/n7st/influxdb-lineprotocol-typed/-/commits/master) [![coverage report](https://gitlab.com/n7st/influxdb-lineprotocol-typed/badges/master/coverage.svg)](https://gitlab.com/n7st/influxdb-lineprotocol-typed/-/commits/master)
 
 Type-safe serialisation to InfluxDB's
 [line protocol](https://v2.docs.influxdata.com/v2.0/reference/syntax/line-protocol/).

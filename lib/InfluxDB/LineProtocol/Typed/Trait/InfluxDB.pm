@@ -26,7 +26,9 @@ sub as_data {
     } elsif ($type eq 'Num') {
         return $value || 0.00;
     } elsif ($type eq 'Int') {
-        return ($value || 0).'i';
+        my $flag = $attr->does('Unsigned') ? 'u' : 'i';
+
+        return sprintf '%d%s', ($value || 0), $flag;
     } else {
         # Only support the above as they are mappable to InfluxDB datatypes
         throw_exception('WrongTypeConstraintGiven', {

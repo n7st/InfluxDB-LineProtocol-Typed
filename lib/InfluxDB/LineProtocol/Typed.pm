@@ -7,6 +7,7 @@ with qw(
     InfluxDB::LineProtocol::Typed::Trait::InfluxDB
     InfluxDB::LineProtocol::Typed::Trait::Tagset
     InfluxDB::LineProtocol::Typed::Trait::Fieldset
+    InfluxDB::LineProtocol::Typed::Trait::Unsigned
 );
 
 our $VERSION = 1.00;

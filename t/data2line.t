@@ -15,17 +15,17 @@ package MyReport {
     has [ qw(
         first_metric
         second_metric
-    ) ]  => (is => 'ro', isa => 'Str', traits => [ qw(InfluxDB Fieldset Tagset) ]);
+    ) ]  => (is => 'rw', isa => 'Str', traits => [ qw(InfluxDB Fieldset Tagset) ]);
 
     has [ qw(
         negative_float
         positive_float
-    ) ] => (is => 'ro', isa => 'Num', traits => [ qw(InfluxDB Fieldset) ]);
+    ) ] => (is => 'rw', isa => 'Num', traits => [ qw(InfluxDB Fieldset) ]);
 
     has [ qw(
         falseish
         truthy
-    ) ] => (is => 'ro', isa => 'Bool', traits => [ qw(InfluxDB Fieldset) ]);
+    ) ] => (is => 'rw', isa => 'Bool', traits => [ qw(InfluxDB Fieldset) ]);
 
     no Moose;
     __PACKAGE__->meta->make_immutable();
@@ -60,9 +60,30 @@ ok $report = MyReport->new({
 
 ok $line = $report->data2line(), 'Got a line with all values';
 
-is $line, 'Example,first_metric="Hello",second_metric="World" falseish=FALSE,'.
-    'first_metric="Hello",negative_float=-5.55,positive_float=1.01,'.
-    'second_metric="World",truthy=TRUE 123000000000',
-    'Treat the database like the database would like to be treated';
+my $data = <<'DATA';
+Example,first_metric="Hello",second_metric="World" falseish=FALSE,
+first_metric="Hello",negative_float=-5.55,positive_float=1.01,
+second_metric="World",truthy=TRUE
+DATA
+
+$data =~ s/\n//smgx;
+
+my $default_timestamp = 123000000000;
+
+is $line, "${data} ${default_timestamp}", 'Line looks correct';
+
+my $set_timestamp = 456;
+
+ok $line = $report->data2line($set_timestamp);
+
+is $line, "${data} ${set_timestamp}", 'Set the specified timestamp';
+
+$report->first_metric('Goodbye');
+
+$data =~ s/Hello/Goodbye/sgm;
+
+ok $line = $report->data2line();
+
+is $line, "${data} ${default_timestamp}", 'Changed value is correct';
 
 done_testing;

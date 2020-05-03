@@ -32,6 +32,8 @@ package MyReport {
 
     has tag_only => (is => 'ro', isa => 'Str', traits => [ qw(InfluxDB Tagset) ]);
 
+    has no_trait => (is => 'ro', isa => 'Str', default => 'This will be ignored');
+
     no Moose;
     __PACKAGE__->meta->make_immutable();
     1;

@@ -55,3 +55,10 @@ Unsigned integers are a little more complex and require an extra trait:
 ```perl
 has my_unsigned_integer => (is => 'ro', isa => 'Int', traits => [ qw(InfluxDB Fieldset Unsigned) ]);
 ```
+
+### Submitting lines to InfluxDB's API
+
+The generated line should be submitted to your InfluxDB API using either a
+client library such as [InfluxDB::HTTP](https://metacpan.org/pod/InfluxDB::HTTP)
+or a user agent like [Mojo::UserAgent](https://mojolicious.org/perldoc/Mojo/UserAgent)
+or [LWP::UserAgent](https://metacpan.org/pod/LWP::UserAgent).

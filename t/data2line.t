@@ -73,7 +73,7 @@ ok $report = MyReport->new({
 ok $line = $report->data2line(), 'Got a line with all values';
 
 my $data = <<'DATA';
-Example,first_metric="Hello",second_metric="World",tag_only="my tag" falseish=FALSE,
+Example,first_metric="Hello",second_metric="World",tag_only="my\ tag" falseish=FALSE,
 first_metric="Hello",negative_float=-5.55,positive_float=1.01,
 second_metric="World",some_int=7i,some_uint=-10u,truthy=TRUE
 DATA

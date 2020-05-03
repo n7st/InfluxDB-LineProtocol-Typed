@@ -58,6 +58,10 @@ sub _build_translator_str {
     return sub {
         my ($attr, $value) = @_;
 
+        if ($value) {
+            $value =~ s/([^[:alpha:]])/\\$1/gxms;
+        }
+
         return sprintf '"%s"', $value || q{};
     };
 }

@@ -50,11 +50,15 @@ You can use several of Moose's built-in data types:
 * `Int` (mapped to [Integer](https://v2.docs.influxdata.com/v2.0/reference/syntax/line-protocol/#integer))
 * `Bool` (mapped to [Boolean](https://v2.docs.influxdata.com/v2.0/reference/syntax/line-protocol/#boolean))
 
-Unsigned integers are a little more complex and require an extra trait:
+InfluxDB **v2.0+** supports unsigned integers. Unsigned integers are a little
+more complex and require an extra trait:
 
 ```perl
 has my_unsigned_integer => (is => 'ro', isa => 'Int', traits => [ qw(InfluxDB Fieldset Unsigned) ]);
 ```
+
+Please note that attempting to use unsigned integers for older versions of
+InfluxDB breaks data submission with an "invalid number" error.
 
 ### Submitting lines to InfluxDB's API
 

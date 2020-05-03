@@ -39,6 +39,8 @@ my $measurement = SomeMeasurement->new({
     my_field    => -5.01,
     my_both     => 'Hello, world',
 });
+
+my $line = $measurement->data2line();
 ```
 
 You can use several of Moose's built-in data types:
